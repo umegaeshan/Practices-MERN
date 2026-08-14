@@ -36,6 +36,40 @@ router.route('/').get((req,res)=>{
     })
 })
 
+router.route('/update/:id').put(async(req,res)=>{
+    let userId = req.parems.id;
+
+    const {name, age, gender, address} = req.body;
+
+    const updateStudent = {
+        name,
+        age,
+        gender,
+        address
+    }
+
+    const update = await Student.findByIdAndUpdate(userId , updateStudent) 
+        .then(()=>{
+            res.status(200).send({status: "User updated", user : update})
+        }).catch((err)=>{
+            console.log(err);
+            res.status(500).send({status: "Error with updating data", error: err.message})
+        })
+})
+
+router.route('/delete/:id').delete(async(req,res)=>{
+
+    let userId = req.params.id;
+
+    await Student.findByIdAndDelete(userId)
+    .then(()=>{
+        res.status(200).send({status: "User deleted"})
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status: "Error with delete user", error: err.message})
+    })
+})
+
 
 
 
