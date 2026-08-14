@@ -9,7 +9,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8070;
+
+
+
+const studentRoutes = require('./Routes/student.js');
+
+app.use('/students', studentRoutes);
+
 
 
 mongoose.connect(process.env.MONGO_URI)
