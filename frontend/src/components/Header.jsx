@@ -30,7 +30,7 @@ function Header() {
               <NavLink href="/components/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
+              <NavLink href="/add">
                 Create Student
               </NavLink>
             </NavItem>

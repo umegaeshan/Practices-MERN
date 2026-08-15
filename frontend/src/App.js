@@ -2,15 +2,26 @@ import React from 'react';
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateStudent from './components/CreateStudent';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function App() {
   return (
-    // Container eken page eka center karanawa
-   <div>
-      <Header />
-      <CreateStudent />
-   </div>
+
+
+    <Router>
+
+      <div>
+        <Header />
+
+        <Routes>
+          <Route path="/add" element={<CreateStudent />} />
+        </Routes>
+
+
+      </div>
+    </Router>
+
   );
 }
 
