@@ -14,7 +14,6 @@ const PORT = process.env.PORT || 8070;
 
 
 const studentRoutes = require('./Routes/student.js');
-
 app.use('/students', studentRoutes);
 
 
