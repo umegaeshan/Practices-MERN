@@ -12,7 +12,10 @@ import {
   DropdownMenu,
   DropdownItem,
   NavbarText,
+
 } from 'reactstrap';
+
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,13 +29,11 @@ function Header() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Home</NavLink>
+            <NavItem className="me-3">
+              <Link to="/">Home</Link>
             </NavItem>
-            <NavItem>
-              <NavLink href="/add">
-                Create Student
-              </NavLink>
+            <NavItem className="me-3">
+              <Link to="/add">Create Student</Link>
             </NavItem>
           </Nav>
         </Collapse>
