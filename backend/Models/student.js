@@ -26,6 +26,6 @@ const mongoose = require("mongoose");
 
  })
 
- const Student = mongoose.model("Student" , studentSchema);
+ const StudentModel = mongoose.model("Student" , studentSchema);
 
- module.exports = Student;
+ module.exports = StudentModel;

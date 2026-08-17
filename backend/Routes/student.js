@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const Student = require('../Models/student.js');
+const StudentModel = require('../Models/student.js');
 
 
 
 router.route('/add').post((req,res)=>{
     const {name,age,gender,address} = req.body;
     
-    const newStudent = new Student({
+    const newStudent = new StudentModel({
         name,
         age,
         gender,
@@ -25,7 +25,7 @@ router.route('/add').post((req,res)=>{
 })
 
 router.route('/').get((req,res)=>{
-    Student.find().then(StudentsData=>{
+    StudentModel.find().then(StudentsData=>{
         res.json(StudentsData)
     }).
     catch((err)=>{
@@ -46,7 +46,7 @@ router.route('/update/:id').put(async(req,res)=>{
         address
     }
 
-    const update = await Student.findByIdAndUpdate(userId , updateStudent) 
+    const update = await StudentModel.findByIdAndUpdate(userId , updateStudent) 
         .then(()=>{
             res.status(200).send({status: "User updated"})
         }).catch((err)=>{
@@ -59,7 +59,7 @@ router.route('/delete/:id').delete(async(req,res)=>{
 
     let userId = req.params.id;
 
-    await Student.findByIdAndDelete(userId)
+    await StudentModel.findByIdAndDelete(userId)
     .then(()=>{
         res.status(200).send({status: "User deleted"})
     }).catch((err)=>{
@@ -71,7 +71,7 @@ router.route('/delete/:id').delete(async(req,res)=>{
 router.route('/get/:id').get(async(req,res)=>{
     let userId = req.params.id;
 
-    const user = await Student.findById(userId)
+    const user = await StudentModel.findById(userId)
     .then(student=>{
         res.status(200).send({status: "User fetched", student})
     }).catch((err)=>{
